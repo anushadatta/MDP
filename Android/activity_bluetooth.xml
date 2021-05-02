@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorWhite"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <RelativeLayout
+            android:id="@+id/firstHalfLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <LinearLayout
+                android:id="@+id/backLinear"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/backBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="false"
+                    android:cropToPadding="false"
+                    android:elevation="14dp"
+                    android:text="Back"
+                    android:textSize="15dp"
+                    android:padding="10dp"
+                    android:drawableLeft="@drawable/back"
+                    android:background="@drawable/neutralbtn"
+                    />
+
+                <TextView
+                    android:id="@+id/connStatusTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:gravity="center"
+                    android:text="Disconnected"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/searchLinear"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:layout_below="@+id/backLinear">
+
+                <Switch
+                    android:id="@+id/bluetoothSwitch"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:splitTrack="false"
+                    android:text="OFF"
+                    android:shadowColor="@color/colorTab"
+                    tools:layout_editor_absoluteY="33dp" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="120dp"
+                    android:onClick="toggleButtonScan"
+                    android:gravity="center"
+                    android:text="SEARCH"
+                    android:drawableLeft="@drawable/search"
+                    android:adjustViewBounds="false"
+                    android:cropToPadding="false"
+                    android:padding="10dp"
+                    android:background="@drawable/neutralbtn"
+                    android:textStyle="bold"/>
+
+
+            </LinearLayout>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="7dp"
+                android:layout_below="@id/searchLinear">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:background="@color/colorTab"
+                        android:listSelector="#bdb9b9"
+                        android:text="Device Found"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <ListView
+                        android:id="@+id/otherDevicesListView"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:background="@color/colorWhite"
+                        android:gravity="bottom"
+                        android:scrollbars="vertical"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="14sp"
+
+                        />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="7dp"
+                android:layout_below="@id/card1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    >
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:background="@color/colorTab"
+                        android:listSelector="#bdb9b9"
+                        android:text="Paired Devices"
+                        android:gravity="center"
+                        android:textAlignment="center"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+
+                    <ListView
+                        android:id="@+id/pairedDevicesListView"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:background="@color/colorWhite"
+                        android:gravity="bottom"
+                        android:listSelector="#bdb9b9"
+                        android:scrollbars="vertical"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/card2"
+                >
+
+                <Button
+                    android:id="@+id/connectBtn"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.4"
+                    android:gravity="center"
+                    android:text="CONNECT"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/positivebtn"
+                    />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.4"
+                    android:gravity="center"
+                    android:text="DISCONNECT"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/negativebtn"
+                    />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/firstHalfLayout"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center"
+                    android:textColor="@color/colorBlack"
+                    android:text="Communication"
+                    android:textAlignment="center"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="5dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="7dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/messageReceivedTitleTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:background="@color/colorTab"
+                            android:gravity="center"
+                            android:text="Message"
+                            android:textAlignment="center"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/MessageReceivedTV"
+                            android:layout_width="match_parent"
+                            android:layout_height="260dp"
+                            android:gravity="bottom"
+                            android:scrollbars="vertical"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="15dp"/>
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_alignParentBottom="true"
+                    >
+
+                    <EditText
+                        android:id="@+id/typeBoxEditText"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_corner"
+                        android:gravity="center|start"
+                        android:hint="Type something..."
+                        android:textColor="@color/colorBlack"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:textSize="14sp" />
+
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/messageButton"
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_gravity="center_horizontal"
+                        android:foreground="@drawable/ic_send"
+                        android:foregroundGravity="center"
+                        app:backgroundTint="@color/colorTab">
+
+                    </com.google.android.material.floatingactionbutton.FloatingActionButton>
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+
+
+
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
